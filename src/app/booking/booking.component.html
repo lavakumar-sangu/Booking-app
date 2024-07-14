@@ -1,0 +1,10 @@
+<button mat-raised-button (click)="openDialog()">Book Slot</button>
+
+<ng-container *ngIf="bookings.length">
+    <h3>Booked Slots</h3>
+    <ul>
+        <li *ngFor="let booking of bookings">
+            {{ booking.id }}: {{ booking.name }} from {{ booking.startTime }} to {{ booking.endTime }}
+        </li>
+    </ul>
+</ng-container>

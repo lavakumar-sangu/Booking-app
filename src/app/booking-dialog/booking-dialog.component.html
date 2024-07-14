@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Book a Slot</h2>
+<form>
+    <mat-form-field>
+        <input matInput placeholder="Your Name" [(ngModel)]="name" name="name" required />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="startPicker" placeholder="Start Time" [(ngModel)]="startTime" name="startTime"
+            required />
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="endPicker" placeholder="End Time" [(ngModel)]="endTime" name="endTime"
+            required />
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+    <button mat-button (click)="addBooking()">Add</button>
+</form>
