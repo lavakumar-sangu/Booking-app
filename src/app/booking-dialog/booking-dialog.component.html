@@ -1,19 +1,24 @@
-<h2 mat-dialog-title>Book a Slot</h2>
-<form>
-    <mat-form-field>
-        <input matInput placeholder="Your Name" [(ngModel)]="name" name="name" required />
+<form (ngSubmit)="addBooking()" #eventForm="ngForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput required [(ngModel)]="name" name="eventName" />
     </mat-form-field>
-    <mat-form-field>
-        <input matInput [matDatepicker]="startPicker" placeholder="Start Time" [(ngModel)]="startTime" name="startTime"
-            required />
+
+    <mat-form-field appearance="fill">
+        <mat-label>Start Date and Time</mat-label>
+        <input matInput [matDatepicker]="startPicker" required [(ngModel)]="startDate" name="startDate" />
         <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
         <mat-datepicker #startPicker></mat-datepicker>
+        <input type="time" required [(ngModel)]="startTime" name="startTime" />
     </mat-form-field>
-    <mat-form-field>
-        <input matInput [matDatepicker]="endPicker" placeholder="End Time" [(ngModel)]="endTime" name="endTime"
-            required />
+
+    <mat-form-field appearance="fill">
+        <mat-label>End Date and Time</mat-label>
+        <input matInput [matDatepicker]="endPicker" required [(ngModel)]="endDate" name="endDate" />
         <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
         <mat-datepicker #endPicker></mat-datepicker>
+        <input type="time" required [(ngModel)]="endTime" name="endTime" />
     </mat-form-field>
-    <button mat-button (click)="addBooking()">Add</button>
+
+    <button mat-raised-button color="primary" type="submit">Add</button>
 </form>

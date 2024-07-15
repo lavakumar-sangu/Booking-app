@@ -1,0 +1,26 @@
+.title {
+    text-align: center;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.responsive-table {
+    width: 100%;
+    max-width: 800px;
+    border-spacing: 0 15px;
+}
+
+.responsive-table th, .responsive-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .responsive-table {
+        font-size: 12px;
+    }
+}

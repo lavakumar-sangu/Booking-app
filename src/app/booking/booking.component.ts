@@ -16,6 +16,8 @@ interface Booking {
 })
 export class BookingComponent implements OnInit {
   bookings: Booking[] = [];
+  displayedColumns: string[] = ['id', 'name', 'startTime', 'endTime'];
+
 
   constructor(private dialog: MatDialog) { }
 
@@ -31,6 +33,8 @@ export class BookingComponent implements OnInit {
         this.bookings.push(result);
         localStorage.setItem('bookings', JSON.stringify(this.bookings));
       }
+      this.loadBookings();
+
     });
   }
 

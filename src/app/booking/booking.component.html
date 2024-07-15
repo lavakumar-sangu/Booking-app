@@ -1,10 +1,37 @@
 <button mat-raised-button (click)="openDialog()">Book Slot</button>
 
 <ng-container *ngIf="bookings.length">
-    <h3>Booked Slots</h3>
-    <ul>
-        <li *ngFor="let booking of bookings">
-            {{ booking.id }}: {{ booking.name }} from {{ booking.startTime }} to {{ booking.endTime }}
-        </li>
-    </ul>
+    <h3 class="title">Booked Slots</h3>
+    <div class="table-container">
+        <table mat-table [dataSource]="bookings" class="mat-elevation-z8 responsive-table">
+
+            <!-- Booking ID Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Booking ID </th>
+                <td mat-cell *matCellDef="let booking"> {{ booking.id }} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let booking"> {{ booking.name }} </td>
+            </ng-container>
+
+            <!-- Start Time Column -->
+            <ng-container matColumnDef="startTime">
+                <th mat-header-cell *matHeaderCellDef> Start Time </th>
+                <td mat-cell *matCellDef="let booking"> {{ booking.startTime| date:'medium' }} </td>
+            </ng-container>
+
+            <!-- End Time Column -->
+            <ng-container matColumnDef="endTime">
+                <th mat-header-cell *matHeaderCellDef> End Time </th>
+                <td mat-cell *matCellDef="let booking"> {{ booking.endTime| date:'medium' }} </td>
+            </ng-container>
+
+            <!-- Header and Row Declarations -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
 </ng-container>

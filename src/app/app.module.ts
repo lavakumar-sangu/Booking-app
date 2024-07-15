@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -12,16 +12,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BookingComponent } from './booking/booking.component';
 import { BookingDialogComponent } from './booking-dialog/booking-dialog.component';
+import { MatTableModule } from '@angular/material/table';
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
     pathMatch: 'full',
     component: BookingComponent
   },
-
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,10 +39,15 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatTableModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [BookingDialogComponent]
+  entryComponents: [BookingDialogComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
