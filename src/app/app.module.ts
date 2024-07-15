@@ -8,11 +8,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BookingComponent } from './booking/booking.component';
 import { BookingDialogComponent } from './booking-dialog/booking-dialog.component';
 
+const appRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
+    component: BookingComponent
+  },
+
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +37,8 @@ import { BookingDialogComponent } from './booking-dialog/booking-dialog.componen
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent],
